@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CourseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model= Course ::class;
+    
     public function definition(): array
     {
+        $name = ['Body Sculpity', 'Power Workout', 'Step', 'Spinning', 'Zumba', 'Pilates','Yoga'];
+    
+        
         return [
-            //
+            'name'=> fake()->randomElement($name),
+            'description' => fake() -> text(200),
         ];
     }
 }

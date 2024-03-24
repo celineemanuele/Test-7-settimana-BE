@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,12 @@ class ReservationFactory extends Factory
      */
     public function definition(): array
     {
+
+        $status= ['Pending','Rejected','Cancelled'];
         return [
-            //
+            'status' => fake()->randomElement($status),
+            'course_id' => Course::get()->random()->id,
+            'user_id' =>User::get()->random()->id,
         ];
     }
 }

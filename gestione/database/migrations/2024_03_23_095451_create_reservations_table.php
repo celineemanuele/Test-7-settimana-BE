@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('status');
+            $table->foreignId('course_id');
+            $table->foreignId('user_id');
+            $table->foreign('course_id')->references('id')->on('courses')
+                    ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                    ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
